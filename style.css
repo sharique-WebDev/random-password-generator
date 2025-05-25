@@ -1,0 +1,106 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .container>* {
+            margin: 10px 0;
+        }
+        
+        .container {
+            background-color: rgb(137, 184, 184);
+            width: 500px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-field {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .input-field i {
+            position: absolute;
+            right: 14px;
+            color: grey;
+            cursor: pointer;
+        }
+
+        .input-field i:hover {
+            color: black;
+        }
+
+        input {
+            width: 94%;
+            padding: 15px 12px;
+            font-size: 18px;
+            border: 2px solid black;
+            border-radius: 10px;
+            letter-spacing: 2px;
+        }
+
+        button {
+            padding: 13px 20px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        button:active {
+            transform: scale(.95);
+        }
+
+        .copyMsg {
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: -40px;
+            right: 30px;
+            opacity: 0;
+            transition: bottom 0.2s ease, opacity 0.5s ease;
+        }
+
+        @media screen and (max-width: 400px) {
+            .container {
+                padding: 15px;
+                width: 280px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            input {
+                padding: 14px 10px;
+                font-size: 16px;
+            }
+
+            button {
+                padding: 12px 18px;
+                font-size: 16px;
+            }
+
+            .input-field i {
+                font-size: 25px;
+            }
+        }
