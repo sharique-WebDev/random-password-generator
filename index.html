@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <!-- bootstrap 5 -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,15 +15,39 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Random Password Generator</h2>
-        <div class="input-field">
-            <input type="" readonly placeholder="Create Password"><br>
-            <i class="fa-regular fa-copy fa-2xl"></i>
+    <div class="flex">
+        <div class="container">
+            <h2>Random Password Generator</h2>
+
+            <!-- Password Output Field -->
+            <div class="input-field">
+                <input type="text" id="passwordField" readonly placeholder="Create Password"><br>
+                <i class="fa-regular fa-copy fa-2xl"></i>
+            </div>
+
+            <!-- Password Length Input -->
+            <div class="length-field d-flex flex-start">
+                <label for="lengthInput">Password length:</label>
+            <input type="number" id="lengthInput" min="4" max="50" value="12">
+            </div>
+
+            <!-- Options for character types -->
+            <div class="options">
+                <input type="checkbox" id="uppercase" checked> <label for="uppercase">Uppercase</label><br>
+                <input type="checkbox" id="lowercase" checked> <label for="uppercase">Lowercase</label><br>
+                <input type="checkbox" id="numbers" checked> <label for="uppercase">Numbers</label><br>
+                <input type="checkbox" id="symbols" checked> <label for="uppercase">Symbols</label>
+            </div>
+            <button>Generate</button>
         </div>
-        <button>Generate</button>
-        <div class="copyMsg">Password copied!</div>
     </div>
+
+    <div class="copyMsg">Password copied!</div>
+    <footer class="py-2">
+        <p>
+            &copy; 2025 Password Generator - Design by <a href="">Sharique</a> | All rights reserved.
+        </p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

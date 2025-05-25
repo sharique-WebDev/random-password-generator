@@ -1,30 +1,51 @@
-const inputEl = document.querySelector("input")
-        const copyBtn = document.querySelector(".fa-copy")
-        const btn = document.querySelector("button")
-        const copyMsg = document.querySelector(".copyMsg")
+const inputEl = document.getElementById("passwordField");
+const copyBtn = document.querySelector(".fa-copy");
+const btn = document.querySelector("button");
+const copyMsg = document.querySelector(".copyMsg");
+const lengthInput = document.getElementById("lengthInput");
 
-        function generatePassword() {
-            let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=";
-            let password = ""
-            for (let i = 0; i < 12; i++) {
-                let randIdx = Math.floor(Math.random() * charSet.length)
-                password += charSet[randIdx]
-            }
-            inputEl.value = password;
-        }
+// Checkbox references
+const uppercaseEl = document.getElementById("uppercase");
+const lowercaseEl = document.getElementById("lowercase");
+const numbersEl = document.getElementById("numbers");
+const symbolsEl = document.getElementById("symbols");
 
-        function copyPassword() {
-            inputEl.select();
-            document.execCommand("copy");
+function generatePassword() {
+    let charSet = "";
+    if (uppercaseEl.checked) charSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (lowercaseEl.checked) charSet += "abcdefghijklmnopqrstuvwxyz";
+    if (numbersEl.checked)   charSet += "0123456789";
+    if (symbolsEl.checked)   charSet += "!@#$%^&*()-_+=";
 
-            copyMsg.style.bottom = "20px"
-            copyMsg.style.opacity = "1"
+    let password = "";
+    let length = parseInt(lengthInput.value) || 12;
 
-            setTimeout(() => {
-                copyMsg.style.bottom = "-40px"
-                copyMsg.style.opacity = "0"
-            }, 2000);
-        }
+    if (charSet.length === 0) {
+        alert("Please select at least one character type!");
+        return;
+    }
 
-        btn.addEventListener("click", generatePassword)
-        copyBtn.addEventListener("click", copyPassword)
+    for (let i = 0; i < length; i++) {
+        let randIdx = Math.floor(Math.random() * charSet.length);
+        password += charSet[randIdx];
+    }
+
+    inputEl.value = password;
+}
+
+function copyPassword() {
+    inputEl.select();
+    document.execCommand("copy");
+
+    copyMsg.style.bottom = "40px";
+    copyMsg.style.opacity = "1";
+
+    setTimeout(() => {
+        copyMsg.style.bottom = "-40px";
+        copyMsg.style.opacity = "0";
+    }, 2000);
+}
+
+// Event listeners
+btn.addEventListener("click", generatePassword);
+copyBtn.addEventListener("click", copyPassword);
